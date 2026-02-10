@@ -1,0 +1,26 @@
+services:
+  # Backend API
+  - type: web
+    name: tarefas-cris-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: JWT_SECRET
+        generateValue: true
+    healthCheckPath: /api/health
+
+  # Frontend Static Site
+  - type: web
+    name: tarefas-cris-frontend
+    runtime: static
+    buildCommand: echo "No build needed"
+    staticPublishPath: ./public
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

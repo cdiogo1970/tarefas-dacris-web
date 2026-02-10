@@ -1,0 +1,27 @@
+{
+  "name": "tarefas-cris-web",
+  "version": "1.0.0",
+  "description": "Sistema web de gerenciamento de tarefas com autenticação",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
+  },
+  "keywords": [
+    "tasks",
+    "notes",
+    "todo"
+  ],
+  "author": "Tarefas Cris",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

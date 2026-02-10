@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Tarefas - Tarefas Cris</title>
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Tarefas Cris</h2>
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="tasks.html" class="nav-item active">
+                    <span class="icon">📝</span>
+                    <span>Tarefas</span>
+                </a>
+                <a href="themes.html" class="nav-item">
+                    <span class="icon">🎨</span>
+                    <span>Temas</span>
+                </a>
+                <a href="statistics.html" class="nav-item">
+                    <span class="icon">📊</span>
+                    <span>Estatísticas</span>
+                </a>
+                <a href="settings.html" class="nav-item">
+                    <span class="icon">⚙️</span>
+                    <span>Configurações</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div id="userName" style="font-weight: 500;">Carregando...</div>
+                    <div id="userEmail" style="font-size: 12px; color: var(--muted);"></div>
+                </div>
+                <button id="logoutBtn" class="btn btn-secondary" style="width: 100%;">
+                    Sair
+                </button>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Minhas Tarefas</h1>
+                <button class="btn btn-primary" onclick="openNewTaskModal()">
+                    + Nova Tarefa
+                </button>
+            </div>
+            
+            <!-- Filters -->
+            <div class="filters">
+                <div class="filter-group">
+                    <button class="filter-btn active" onclick="filterByStatus('all')">Todas</button>
+                    <button class="filter-btn" onclick="filterByStatus('active')">Ativas</button>
+                    <button class="filter-btn" onclick="filterByStatus('completed')">Concluídas</button>
+                </div>
+                
+                <div class="filter-group" id="priorityFilters">
+                    <button class="filter-btn active" onclick="filterByPriority('all')">Todas Prioridades</button>
+                    <button class="filter-btn" onclick="filterByPriority('high')">Alta</button>
+                    <button class="filter-btn" onclick="filterByPriority('medium')">Média</button>
+                    <button class="filter-btn" onclick="filterByPriority('low')">Baixa</button>
+                </div>
+                
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Buscar tarefas...">
+                </div>
+                
+                <div class="sort-group">
+                    <select id="sortSelect">
+                        <option value="date">Mais recentes</option>
+                        <option value="alphabetical">Alfabética</option>
+                        <option value="priority">Prioridade</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Theme Filters -->
+            <div class="filters">
+                <div class="filter-group" id="themeFilters">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Tasks List -->
+            <div id="tasksList" class="tasks-list">
+                <!-- Populated by JavaScript -->
+            </div>
+        </main>
+    </div>
+    
+    <!-- Task Modal -->
+    <div id="taskModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Nova Tarefa</h2>
+                <button class="modal-close" onclick="closeModal()">×</button>
+            </div>
+            
+            <form id="taskForm" class="task-form">
+                <div class="form-group">
+                    <label for="taskTitle">Título *</label>
+                    <input type="text" id="taskTitle" required placeholder="Digite o título da tarefa">
+                </div>
+                
+                <div class="form-group">
+                    <label for="taskDescription">Descrição</label>
+                    <textarea id="taskDescription" rows="3" placeholder="Adicione uma descrição (opcional)"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="taskTheme">Tema</label>
+                    <select id="taskTheme">
+                        <!-- Populated by JavaScript -->
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="taskPriority">Prioridade</label>
+                    <select id="taskPriority" required>
+                        <option value="low">Baixa</option>
+                        <option value="medium" selected>Média</option>
+                        <option value="high">Alta</option>
+                    </select>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="taskDate">Data</label>
+                        <input type="date" id="taskDate">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="taskTime">Horário</label>
+                        <input type="time" id="taskTime">
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" id="deleteTaskBtn" class="btn btn-secondary" onclick="deleteTask()" style="display: none;">
+                        Excluir
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        Salvar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="src/js/auth.js?v=4"></script>
+    <script src="src/js/app.js?v=4"></script>
+</body>
+</html>

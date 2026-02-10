@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Tarefas Cris</title>
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>Tarefas Cris</h1>
+                <p>Organize suas tarefas diárias</p>
+            </div>
+            
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" required placeholder="••••••••">
+                </div>
+                
+                <div class="form-options">
+                    <label class="checkbox">
+                        <input type="checkbox" id="remember">
+                        <span>Lembrar-me</span>
+                    </label>
+                    <a href="#" class="link">Esqueceu a senha?</a>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Entrar</button>
+                
+                <div class="form-footer">
+                    <p>Não tem uma conta? <a href="register.html" class="link">Criar conta</a></p>
+                </div>
+            </form>
+            
+            <div id="loginError" class="error-message" style="display: none;"></div>
+        </div>
+    </div>
+    
+    <script src="src/js/auth.js"></script>
+    <script>
+        redirectIfAuthenticated();
+    </script>
+</body>
+</html>
